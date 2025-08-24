@@ -1,0 +1,275 @@
+{
+  "summary": {
+    "total_tests": 12,
+    "passed": 12,
+    "failed": 0,
+    "pass_rate": 100.0,
+    "execution_time": "2025-08-24T14:12:07.890371",
+    "test_environment": "http://localhost:5003"
+  },
+  "test_results": [
+    {
+      "test_id": "REG_001",
+      "description": "Successful registration with valid data",
+      "test_data": {
+        "username": "testuser_1756069911",
+        "email": "test_1756069911@example.com",
+        "password": "SecurePass123!",
+        "confirm_password": "SecurePass123!",
+        "first_name": "John",
+        "last_name": "Doe"
+      },
+      "expected_result": "success",
+      "actual_response": {
+        "status_code": 201,
+        "response_time": 1.9356340330234552,
+        "body": {
+          "message": "Registration successful",
+          "user_id": 2917
+        },
+        "success": true
+      },
+      "execution_time": 1.9401569366455078,
+      "passed": true,
+      "timestamp": "2025-08-24T14:11:53.579366"
+    },
+    {
+      "test_id": "REG_002",
+      "description": "Registration with minimum required fields",
+      "test_data": {
+        "username": "minuser_1756069913",
+        "email": "min_1756069913@example.com",
+        "password": "MinPass123!"
+      },
+      "expected_result": "success",
+      "actual_response": {
+        "status_code": 201,
+        "response_time": 1.3866835945064218,
+        "body": {
+          "message": "Registration successful",
+          "user_id": 6523
+        },
+        "success": true
+      },
+      "execution_time": 1.3911333084106445,
+      "passed": true,
+      "timestamp": "2025-08-24T14:11:54.970601"
+    },
+    {
+      "test_id": "REG_003",
+      "description": "Registration with all optional fields",
+      "test_data": {
+        "username": "complete_1756069914",
+        "email": "complete_1756069914@example.com",
+        "password": "CompletePass123!",
+        "first_name": "Jane",
+        "last_name": "Smith",
+        "phone": "+1234567890",
+        "address": "123 Test Street"
+      },
+      "expected_result": "success",
+      "actual_response": {
+        "status_code": 201,
+        "response_time": 1.4944920679478602,
+        "body": {
+          "message": "Registration successful",
+          "user_id": 5866
+        },
+        "success": true
+      },
+      "execution_time": 1.4988110065460205,
+      "passed": true,
+      "timestamp": "2025-08-24T14:11:56.469547"
+    },
+    {
+      "test_id": "REG_004",
+      "description": "Registration with empty username",
+      "test_data": {
+        "username": "",
+        "email": "test@example.com",
+        "password": "ValidPass123!"
+      },
+      "expected_result": "Username is required",
+      "actual_response": {
+        "status_code": 400,
+        "response_time": 1.6711176840712823,
+        "body": {
+          "error": "Username is required"
+        },
+        "success": false
+      },
+      "execution_time": 1.6744201183319092,
+      "passed": true,
+      "timestamp": "2025-08-24T14:11:58.144135"
+    },
+    {
+      "test_id": "REG_005",
+      "description": "Registration with empty email",
+      "test_data": {
+        "username": "testuser",
+        "email": "",
+        "password": "ValidPass123!"
+      },
+      "expected_result": "Email is required",
+      "actual_response": {
+        "status_code": 400,
+        "response_time": 0.6857987656490596,
+        "body": {
+          "error": "Email is required"
+        },
+        "success": false
+      },
+      "execution_time": 0.6908440589904785,
+      "passed": true,
+      "timestamp": "2025-08-24T14:11:58.835067"
+    },
+    {
+      "test_id": "REG_006",
+      "description": "Registration with empty password",
+      "test_data": {
+        "username": "testuser",
+        "email": "test@example.com",
+        "password": ""
+      },
+      "expected_result": "Password is required",
+      "actual_response": {
+        "status_code": 400,
+        "response_time": 1.3331320464731393,
+        "body": {
+          "error": "Password is required"
+        },
+        "success": false
+      },
+      "execution_time": 1.337458848953247,
+      "passed": true,
+      "timestamp": "2025-08-24T14:12:00.172607"
+    },
+    {
+      "test_id": "REG_007",
+      "description": "Registration with invalid email format",
+      "test_data": {
+        "username": "testuser",
+        "email": "invalid-email",
+        "password": "ValidPass123!"
+      },
+      "expected_result": "Please enter a valid email address",
+      "actual_response": {
+        "status_code": 400,
+        "response_time": 1.591059665417361,
+        "body": {
+          "error": "Please enter a valid email address"
+        },
+        "success": false
+      },
+      "execution_time": 1.5957870483398438,
+      "passed": true,
+      "timestamp": "2025-08-24T14:12:01.768452"
+    },
+    {
+      "test_id": "REG_015",
+      "description": "SQL injection protection",
+      "test_data": {
+        "username": "admin'; DROP TABLE users; --",
+        "email": "test@example.com",
+        "password": "ValidPass123!"
+      },
+      "expected_result": "Invalid characters",
+      "actual_response": {
+        "status_code": 400,
+        "response_time": 1.153084963565017,
+        "body": {
+          "error": "Invalid characters in username"
+        },
+        "success": false
+      },
+      "execution_time": 1.1564948558807373,
+      "passed": true,
+      "timestamp": "2025-08-24T14:12:02.925015"
+    },
+    {
+      "test_id": "REG_016",
+      "description": "XSS attack protection",
+      "test_data": {
+        "username": "<script>alert('XSS')</script>",
+        "email": "test@example.com",
+        "password": "ValidPass123!"
+      },
+      "expected_result": "Invalid characters",
+      "actual_response": {
+        "status_code": 400,
+        "response_time": 0.8283031192766802,
+        "body": {
+          "error": "Invalid characters in username"
+        },
+        "success": false
+      },
+      "execution_time": 0.8283929824829102,
+      "passed": true,
+      "timestamp": "2025-08-24T14:12:03.753487"
+    },
+    {
+      "test_id": "REG_012a",
+      "description": "Username below minimum length",
+      "test_data": {
+        "username": "ab",
+        "email": "test@example.com",
+        "password": "ValidPass123!"
+      },
+      "expected_result": "Username must be at least 3 characters",
+      "actual_response": {
+        "status_code": 400,
+        "response_time": 1.2761337784223097,
+        "body": {
+          "error": "Username must be at least 3 characters"
+        },
+        "success": false
+      },
+      "execution_time": 1.2803080081939697,
+      "passed": true,
+      "timestamp": "2025-08-24T14:12:05.033903"
+    },
+    {
+      "test_id": "REG_013a",
+      "description": "Password below minimum length",
+      "test_data": {
+        "username": "testuser",
+        "email": "test@example.com",
+        "password": "Pass1!"
+      },
+      "expected_result": "Password must be at least 8 characters",
+      "actual_response": {
+        "status_code": 400,
+        "response_time": 1.016591459281316,
+        "body": {
+          "error": "Password must be at least 8 characters"
+        },
+        "success": false
+      },
+      "execution_time": 1.0213420391082764,
+      "passed": true,
+      "timestamp": "2025-08-24T14:12:06.055326"
+    },
+    {
+      "test_id": "REG_023",
+      "description": "Registration response time",
+      "test_data": {
+        "username": "perfuser_1756069926",
+        "email": "perf_1756069926@example.com",
+        "password": "PerfPass123!"
+      },
+      "expected_result": "success",
+      "actual_response": {
+        "status_code": 201,
+        "response_time": 1.8318701621194866,
+        "body": {
+          "message": "Registration successful",
+          "user_id": 9377
+        },
+        "success": true
+      },
+      "execution_time": 1.834752082824707,
+      "passed": true,
+      "timestamp": "2025-08-24T14:12:07.890153"
+    }
+  ]
+}

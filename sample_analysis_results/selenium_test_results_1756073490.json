@@ -1,0 +1,77 @@
+{
+  "test_execution": {
+    "timestamp": "2025-08-24T15:11:30.315181",
+    "browser": "Chrome",
+    "headless": true,
+    "total_tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "pass_rate": 100.0
+  },
+  "test_results": [
+    {
+      "test_id": "SEL_001",
+      "description": "Browser Navigation Test",
+      "passed": true,
+      "message": "Successfully navigated to httpbin, title: httpbin.org",
+      "execution_time": 18.290222644805908,
+      "timestamp": "2025-08-24T15:11:17.097248"
+    },
+    {
+      "test_id": "SEL_002",
+      "description": "Form Elements Detection",
+      "passed": true,
+      "message": "Found 12 form elements (11 inputs, 1 textareas)",
+      "execution_time": 0.18303275108337402,
+      "timestamp": "2025-08-24T15:11:17.785652"
+    },
+    {
+      "test_id": "SEL_003",
+      "description": "Form Interaction Test",
+      "passed": true,
+      "message": "Successfully interacted with 2 form elements",
+      "execution_time": 0.40152406692504883,
+      "timestamp": "2025-08-24T15:11:18.691910"
+    },
+    {
+      "test_id": "SEL_004",
+      "description": "Page Responsiveness Test",
+      "passed": true,
+      "message": "Page loaded in 1.12s, content length: 1173 chars",
+      "execution_time": 1.126695156097412,
+      "timestamp": "2025-08-24T15:11:20.321222"
+    },
+    {
+      "test_id": "SEL_005",
+      "description": "JavaScript Execution Test",
+      "passed": true,
+      "message": "JavaScript execution successful: 2+2=4, title='httpbin.org'",
+      "execution_time": 0.38981199264526367,
+      "timestamp": "2025-08-24T15:11:21.215111"
+    },
+    {
+      "test_id": "SEL_006",
+      "description": "Element Waiting Test",
+      "passed": true,
+      "message": "Successfully waited for and found body element",
+      "execution_time": 0.5943868160247803,
+      "timestamp": "2025-08-24T15:11:22.313366"
+    },
+    {
+      "test_id": "SEL_007",
+      "description": "Multiple Window Sizes Test",
+      "passed": true,
+      "message": "Successfully tested 2/3 window sizes",
+      "execution_time": 6.1649439334869385,
+      "timestamp": "2025-08-24T15:11:28.980700"
+    },
+    {
+      "test_id": "SEL_008",
+      "description": "Cookie Handling Test",
+      "passed": true,
+      "message": "Cookie handling test completed - cookies detected in response",
+      "execution_time": 0.3265390396118164,
+      "timestamp": "2025-08-24T15:11:29.809977"
+    }
+  ]
+}
